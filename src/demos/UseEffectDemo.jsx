@@ -4,18 +4,13 @@ const UseEffectDemo = () => {
     let [users, setUsers] = useState([]);
 
     useEffect(() => {
-        console.log('ss', users)
-
         fetchUsers();
-        console.log('ss', users)
     }, []);
 
     const fetchUsers = () => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(res => res.json())
             .then(res => setUsers(res));
-        console.log('ss', users)
-
     }
 
     return (<>

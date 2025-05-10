@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { createPortal } from 'react-dom'
 import UseEffectDemo from './demos/UseEffectDemo'
+import UseThemeDemo from './demos/UseThemeDemo'
+import ThemeContext from './context/ThemeContext'
 
 function App() {
   const testPortal = () => {
@@ -11,20 +13,25 @@ function App() {
   }
 
   let [count, setCount] = useState(0);
+  let [theme, setTheme] = useState('light');
+
 
   const clickCountHandler = () => {
     setCount(prev => prev + 1);
   }
 
   return (
-    <>
-      {testPortal()}
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div style={{ background: theme === 'light' ? 'black' : 'white', color: theme === 'light' ? 'white' : 'black' }}>
+        {testPortal()}
 
-      {count}
-      <button onClick={clickCountHandler}>Increase</button>
+        {count}
+        <button onClick={clickCountHandler}>Increase</button>
 
-      <UseEffectDemo></UseEffectDemo>
-    </>
+        <UseEffectDemo></UseEffectDemo>
+        <UseThemeDemo></UseThemeDemo>
+      </div>
+    </ThemeContext.Provider>
   )
 }
 
