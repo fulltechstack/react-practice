@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { createPortal } from 'react-dom'
+import UseEffectDemo from './demos/UseEffectDemo'
 
 function App() {
   const testPortal = () => {
@@ -21,6 +22,8 @@ function App() {
 
       {count}
       <button onClick={clickCountHandler}>Increase</button>
+
+      <UseEffectDemo></UseEffectDemo>
     </>
   )
 }
